@@ -60,24 +60,3 @@ document.querySelectorAll('.call-btn').forEach(button => {
 document.getElementById("cllhistory").addEventListener("click", () => {
   historyList.innerHTML = "";
 });
-
-let copyCount = 0;
-
-document.querySelectorAll('.copy-btn').forEach(button => {
-  button.addEventListener('click', function() {
-    const card = button.closest('.card'); // find the card
-    const number = card.querySelector('.service-number').innerText; // get the number
-
-    // Copy to clipboard
-    navigator.clipboard.writeText(number).then(() => {
-      copyCount++;
-      alert(`Number ${number} copied!`);
-      
-      // Update button text dynamically
-      button.innerText = `${copyCount} Copy`;
-    }).catch(err => {
-      alert("Failed to copy!");
-      console.error(err);
-    });
-  });
-});
